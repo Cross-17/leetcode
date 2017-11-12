@@ -1,0 +1,32 @@
+66. Plus One
+
+Given a non-negative integer represented as a non-empty array of digits, plus one to the integer.
+
+You may assume the integer do not contain any leading zero, except the number 0 itself.
+
+The digits are stored such that the most significant digit is at the head of the list.
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        boolean terminated = false;
+        int index = digits.length - 1;
+        while(! terminated){
+            if(index == 0 && digits[0] == 9){
+                int[] result = new int[digits.length + 1];
+                result[0] = 1;
+                result[1] = 0;
+                for(int i = 1; i < digits.length; i++)
+                    result[i+1] = digits[i];
+                return result;
+            }
+            if(digits[index] == 9){
+                digits[index] = 0;
+                index --;
+            }else{
+                terminated = true;
+                digits[index]++;
+            }
+        }
+        return digits;
+    }
+}
